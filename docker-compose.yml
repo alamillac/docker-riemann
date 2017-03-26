@@ -1,0 +1,20 @@
+version: "2"
+services:
+  riemann-dash:
+    container_name: "riemann-dash"
+    build: .
+    ports:
+     - "4567:4567"
+  riemann:
+    container_name: "riemann"
+    image: "mnuessler/riemann"
+    ports:
+    - "5555:5555"
+    - "5556:5556"
+    environment:
+    - RIEMANN_VERSION=0.2.12
+    volumes:
+     - ./src/riemann_etc:/etc/riemann/conf.d
+  smtp:
+    container_name: "smtp"
+    image: "namshi/smtp"

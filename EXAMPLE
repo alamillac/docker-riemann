@@ -1,0 +1,3 @@
+docker run --name riemann -e "RIEMANN_VERSION=0.2.12" -v $PWD/src/riemann_etc:/app/etc -d -p 5555:5555 -p 5555:5555/udp -p 5556:5556 rlister/riemann
+
+docker run -p 4567:4567 --name riemann-dash -d alamilla/riemann-dash
